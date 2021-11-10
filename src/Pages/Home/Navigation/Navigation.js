@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import { typography } from '@mui/system';
 
 
 const Navigation = () => {
@@ -29,7 +30,7 @@ const Navigation = () => {
               <MenuIcon />
             </IconButton>
            <Box>
-             <img style={{width:'100%'}} src="https://lh3.googleusercontent.com/proxy/HjbKakuhjiyCAXNdnLsV7St4VDHr30vbj7GR1LXByZB4V9KoxgImyejGk4oeukkpXiwdEM1YtjkpLXmKtfciZJJOqRJ4UZ7CjyqMptlnpp4fuvL_kX7u" alt=""/>
+             <img style={{width:'50%'}} src="https://lh3.googleusercontent.com/proxy/HjbKakuhjiyCAXNdnLsV7St4VDHr30vbj7GR1LXByZB4V9KoxgImyejGk4oeukkpXiwdEM1YtjkpLXmKtfciZJJOqRJ4UZ7CjyqMptlnpp4fuvL_kX7u" alt=""/>
            </Box>
 
 
@@ -43,7 +44,7 @@ const Navigation = () => {
            <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>MOTORCYCLE</Button>
            </Link>
 
-           <Link to='/productInfo' style={{textDecoration:'none',paddingRight:"4px"}}>
+           <Link to='/productsInfo' style={{textDecoration:'none',paddingRight:"4px"}}>
                 <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>CONTACT</Button>
            </Link>
 
@@ -53,17 +54,28 @@ const Navigation = () => {
             </Link>
 
 
-           <Link to='/' style={{textDecoration:'none',paddingRight:"4px"}}>
-                <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>DASHBOARD</Button>
-            </Link>
 
-           <Link to='/login' style={{textDecoration:'none',paddingRight:"4px"}}>
+          {user?.email?
+            <Box>
+                
+                <Link to='/' style={{textDecoration:'none',paddingRight:"4px"}}>
+                      <Button onClick={userLogOut} style={{color:'red',fontSize:'18px',fontWeight:'bold'}}>Logout</Button>
+                      
+                </Link>
+                <Typography variant="h6">{user.email}</Typography>
+                <Link to='/' style={{textDecoration:'none',paddingRight:"4px"}}>
+                      <Button style={{color:'red',fontSize:'18px',fontWeight:'bold'}}>DASHBOARD</Button>
+                 </Link>
+            </Box>
+              :
+            <Box>
+                <Link to='/login' style={{textDecoration:'none',paddingRight:"4px"}}>
                 <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>LOGIN {user.email}</Button>
-            </Link>
+                 </Link>
+            </Box>
+          }
+          
 
-           <Link to='/' style={{textDecoration:'none',paddingRight:"4px"}}>
-                <Button onClick={userLogOut} style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>Logout</Button>
-          </Link>
 
           </Toolbar>
         </AppBar>

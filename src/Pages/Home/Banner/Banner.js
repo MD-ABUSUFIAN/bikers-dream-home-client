@@ -12,8 +12,8 @@ const Banner = () => {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h3>YAMAHA</h3>
+      <p>THE TOP RANKING AND TOP PARFORMNCE RAIDING.</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>

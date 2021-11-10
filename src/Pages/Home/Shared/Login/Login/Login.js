@@ -14,7 +14,7 @@ import useAuth from '../../../../../Hooks/useAuth';
 const Login = () => {
 
 const {googleLogin,user,
-  emailLogin}=useAuth();
+  emailLogin,authError}=useAuth();
 const location=useLocation();
 const history=useHistory();
 
@@ -29,12 +29,10 @@ const history=useHistory();
 
     const onSubmit = data =>
     {
-      emailLogin(data)
-     console.log(user.email,user.name);
+      emailLogin(data,location,history)
+    alert('login successful')
     }
      
-    
-
      const handleGoogleLogin=()=>{
       googleLogin(location,history)
      }

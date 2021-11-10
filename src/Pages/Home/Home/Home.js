@@ -10,7 +10,7 @@ import Footer from '../Shared/Footer/Footer';
 const Home = () => {
     return (
         <Box container style={{backgroundColor:'#1a1a1a'}}>
-            <Navigation></Navigation>
+            
             <Banner></Banner>
             <HomeProduct></HomeProduct>
             <CurrentOffer></CurrentOffer>

@@ -14,6 +14,8 @@ import Register from './Pages/Home/Shared/Login/Register/Register';
 import Login from './Pages/Home/Shared/Login/Login/Login';
 import ContextProvider from './Context/ContextProvider';
 import PrivateRoute from './Pages/Home/Shared/Login/PrivateRoute/PrivateRoute';
+import Navigation from './Pages/Home/Navigation/Navigation';
+import SingleInfoProducts from './Pages/Home/SingleInfoProduct/SingleInfoProducts';
 
 
 
@@ -24,6 +26,7 @@ function App() {
 
       <ContextProvider>
       <Router>
+      <Navigation></Navigation>
         <Switch>
           <Route exact path="/">
             <Home></Home>
@@ -34,8 +37,8 @@ function App() {
           <PrivateRoute exact path="/allProduct">
             <AllProducts></AllProducts>
           </PrivateRoute>
-          <Route exact path="/productInfo">
-            <AllProducts></AllProducts>
+          <Route exact path="/productsInfo">
+          <SingleInfoProducts></SingleInfoProducts>
           </Route>
           <Route  exact path="/login">
             <Login></Login>
