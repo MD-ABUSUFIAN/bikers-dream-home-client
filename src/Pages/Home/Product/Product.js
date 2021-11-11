@@ -31,7 +31,7 @@ const Product = ({product}) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button variant="contained" size="small" color="primary">
           BUY NOW
         </Button>
       </CardActions>

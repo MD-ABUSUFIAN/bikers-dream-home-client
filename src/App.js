@@ -16,6 +16,7 @@ import ContextProvider from './Context/ContextProvider';
 import PrivateRoute from './Pages/Home/Shared/Login/PrivateRoute/PrivateRoute';
 import Navigation from './Pages/Home/Navigation/Navigation';
 import SingleInfoProducts from './Pages/Home/SingleInfoProduct/SingleInfoProducts';
+import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 
 
 
@@ -26,25 +27,28 @@ function App() {
 
       <ContextProvider>
       <Router>
-      <Navigation></Navigation>
+    
         <Switch>
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <Route exact path="/home">
+          <Route  path="/home">
             <Home></Home>
           </Route>
-          <PrivateRoute exact path="/allProduct">
+          <Route  path="/allProduct">
             <AllProducts></AllProducts>
-          </PrivateRoute>
-          <Route exact path="/productsInfo">
-          <SingleInfoProducts></SingleInfoProducts>
           </Route>
-          <Route  exact path="/login">
+          <PrivateRoute exact path="/productsInfo">
+          <SingleInfoProducts></SingleInfoProducts>
+          </PrivateRoute>
+          <PrivateRoute path="/dashBoard">
+          <DashBoard></DashBoard>
+          </PrivateRoute>
+          <Route  path="/login">
             <Login></Login>
           
           </Route>
-          <Route  exact path="/register">
+          <Route path="/register">
             <Register></Register>
           
           </Route>

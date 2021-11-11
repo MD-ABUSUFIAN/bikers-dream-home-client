@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import Navigation from '../Navigation/Navigation';
+
 
 
 const products=[
@@ -59,37 +59,38 @@ const products=[
 const AllProducts = () => {
     return (
       <Box>
-      <Navigation></Navigation>
+      
        
-       <Box container sx={{ width: '100%',backgroundColor:"#1a1a1a" }}>
-           <Typography variant="h3" sx={{fontWeight: '900',textAlign: 'center',py:10,color:'red'}} >NEW BIKE COLLECTION</Typography>
+       <Box container sx={{ width: '100%'}}>
+           <Typography variant="h3"  sx={{fontWeight: '900',textAlign: 'center',py:2,mb:5,color:'white',backgroundColor:'blue',borderRadius:'20px'}} >My Order List</Typography>
        <Grid container  rowSpacing={4} spacing={{ xs: 1, md: 2 }} columns={{ xs: 10, sm: 5, md: 12 }}>
          
         {
             products.map(product=>
-                <Grid container  item xs={12} sm={6} md={4}>
+                <Grid container  item xs={12} sm={4} md={3}>
          
-         <Card   style={{maxHeight:"450px",maxWidth:"320px",margin:"auto",marginBottom:'10px'}}>
+         <Card   style={{height:"300px",width:"auto",margin:"auto",marginBottom:'10px'}}>
        <CardActionArea>
          <CardMedia style={{maxWidth:"320px"}}>
-           <img style={{width:'100%',maxHeight:'200px'}} src={product.image} alt="green iguana"/>
+           <img style={{width:'100%',maxHeight:'120px'}} src={product.image} alt="green iguana"/>
            
            </CardMedia>
          <CardContent>
-           <Typography gutterBottom variant="h5" component="div">
+           <Typography gutterBottom variant="h6" component="div">
             {product.title}
            </Typography>
-           <Typography variant="body2" color="text.secondary">
-             {product.description}
+           <Typography variant="body1" color="red">
+             Price: ${product.price}
            </Typography>
-           <Typography variant="body4" color="text.secondary">
-             {product.price}
+           <Typography variant="body1" color="blue">
+             Status: {"Panding"}
            </Typography>
          </CardContent>
        </CardActionArea>
        <CardActions>
-         <Button sx={{fontWeight: 'bold'}} variant="contained" size="large" color="primary">
-           BUY NOW
+         <Button sx={{fontWeight: 'bold',backgroundColor: 'red'}} variant="contained" size="small">
+        
+X Delete
          </Button>
        </CardActions>
      </Card>

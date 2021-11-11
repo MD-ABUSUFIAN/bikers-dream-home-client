@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { useForm } from "react-hook-form";
-import { Typography } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import Button from '@restart/ui/esm/Button';
 import { Link,useLocation,useHistory } from 'react-router-dom';
 import { typography } from '@mui/system';
@@ -14,7 +14,7 @@ import useAuth from '../../../../../Hooks/useAuth';
 const Login = () => {
 
 const {googleLogin,user,
-  emailLogin,authError}=useAuth();
+  emailLogin,authError,isLoading}=useAuth();
 const location=useLocation();
 const history=useHistory();
 
@@ -45,22 +45,25 @@ const history=useHistory();
             <Box sx={{mt:'auto',p:8}} style={{width: '100%', height: 'auto',margin:'auto'}}>
             <Typography sx={{my:5}} variant="h3" style={{textAlign:'center',fontWeight:'900'}}>Login</Typography>
             <Typography sx={{my:5}} variant="h5" style={{textAlign:'center',fontWeight:'900'}}>{user.displayName}</Typography>
-     <form  onSubmit={handleSubmit(onSubmit)}>
+          {
+            !isLoading && <form  onSubmit={handleSubmit(onSubmit)}>
         
-        <input style={{width:'100%',margin:3,padding:'10px',marginBottom:'10px'}} {...register("email")} placeholder="Enter Your Email" type="email" required />
-        <br/>
-        
-        <input style={{width:'100%',margin:3,padding:'10px'}} {...register("password")}placeholder="Enter Your Password" required  type="password"/>
-        <br/>
-        <br/>
-         <input style={{width:'100%',padding:'5px',backgroundColor:'#2f6ef7',color:'white',alignItems:'center',fontWeight:'700',fontSize:'20px'}}  type="submit" value="Login"/>
-         <br/>
-         <br/>
-        <Typography style={{textAlign:'center'}}>New User? Please<Link to='/register'>Register</Link></Typography>
-        
-         <p style={{textAlign:"center"}}>.........................or.........................</p>
-         <Button onClick={()=>handleGoogleLogin()} style={{marginLeft:'35%',padding:'10px'}} variant="contained">Google Login</Button>
-     </form>
+            <input style={{width:'100%',margin:3,padding:'10px',marginBottom:'10px'}} {...register("email")} placeholder="Enter Your Email" type="email" required />
+            <br/>
+            
+            <input style={{width:'100%',margin:3,padding:'10px'}} {...register("password")}placeholder="Enter Your Password" required  type="password"/>
+            <br/>
+            <br/>
+             <input style={{width:'100%',padding:'5px',backgroundColor:'#2f6ef7',color:'white',alignItems:'center',fontWeight:'700',fontSize:'20px'}}  type="submit" value="Login"/>
+             <br/>
+             <br/>
+            <Typography style={{textAlign:'center'}}>New User? Please<Link to='/register'>Register</Link></Typography>
+            
+             <p style={{textAlign:"center"}}>.........................or.........................</p>
+             <Button onClick={()=>handleGoogleLogin()} style={{marginLeft:'35%',padding:'10px'}} variant="contained">Google Login</Button>
+         </form>
+          }
+            {isLoading && <CircularProgress />}
             </Box>
           
         </Grid>
