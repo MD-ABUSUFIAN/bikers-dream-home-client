@@ -17,6 +17,9 @@ import PrivateRoute from './Pages/Home/Shared/Login/PrivateRoute/PrivateRoute';
 import Navigation from './Pages/Home/Navigation/Navigation';
 import SingleInfoProducts from './Pages/Home/SingleInfoProduct/SingleInfoProducts';
 import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
+import Footer from './Pages/Home/Shared/Footer/Footer';
+import CustomerReview from './Pages/Home/Reviews/CustomerReview';
+
 
 
 
@@ -27,6 +30,7 @@ function App() {
 
       <ContextProvider>
       <Router>
+   
     
         <Switch>
           <Route exact path="/">
@@ -38,7 +42,7 @@ function App() {
           <Route  path="/allProduct">
             <AllProducts></AllProducts>
           </Route>
-          <PrivateRoute exact path="/productsInfo">
+          <PrivateRoute exact path="/productsInfo/:productId">
           <SingleInfoProducts></SingleInfoProducts>
           </PrivateRoute>
           <PrivateRoute path="/dashBoard">
@@ -46,15 +50,19 @@ function App() {
           </PrivateRoute>
           <Route  path="/login">
             <Login></Login>
-          
           </Route>
           <Route path="/register">
             <Register></Register>
+          </Route>
           
+          <Route path="/register">
+            <Register></Register>
+          </Route>
+          <Route path="/review">
+          <CustomerReview></CustomerReview>
           </Route>
           
         </Switch>
-
       </Router>
 
       </ContextProvider>

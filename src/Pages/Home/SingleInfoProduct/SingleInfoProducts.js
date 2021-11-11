@@ -1,65 +1,125 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button,CardActions } from '@mui/material';
+import {CardActionArea, CardMedia, CircularProgress } from '@mui/material';
 import { useForm } from "react-hook-form";
+import { useParams } from 'react-router';
+import useAuth from '../../../Hooks/useAuth';
+import Footer from '../Shared/Footer/Footer';
+import Navigation from '../Navigation/Navigation';
 
 const SingleInfoProducts = () => {
+  const {productId}=useParams();
+  const [isLoading,setIsLoading]=useState(true);
+const {user}=useAuth();
+  const [product,setProduct]=useState({});
+
+  console.log(productId);
+  useEffect(()=>{
+    setIsLoading(true);
+    fetch(`http://localhost:5000/singleProduct/${productId}`)
+  .then(res=>res.json())
+  .then(data=>setProduct(data))
+  setIsLoading(false);
+  },[isLoading])
+  
+
+  
     const { register, handleSubmit } = useForm();
     const onSubmit = data =>{
-        data.status="Panding";
-        console.log(data);
+        data.status="Pending";
+       
+        fetch('http://localhost:5000/singleOrder',{
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+          })
+          .then(res=>res.json())
+          .then(data=>{  
+            if(data.insertedId==true){
+              setIsLoading(true);
+         
+              alert('Successfully Order')
+            }
+            else{
+              setIsLoading(false);
+            }
+            console.log(data)
+            
+           
+           
+        })
+
+        console.log(data)
+
+        {
+          isLoading && <CircularProgress />
+        }
+       
     }
     return (
-        <Box container  sx={{ flexGrow: 1 }}>
-        <Grid style={{marginTop:"10%"}} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+        <Box container  sx={{ flexGrow: 1,mb:8}}>
+          <Navigation></Navigation>
+         <Box> <Typography variant="h3" style={{fontWeight: '900',textAlign: 'center',marginTop:"100px",backgroundColor:'blue',width:'50%',margin:'auto',padding: '15px',borderRadius:'20px',color:'white'}}>
+            Purchase Your Product
+          </Typography></Box>
+        <Grid style={{marginTop:"3%",marginBottom:"100px"}} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+          
          
             <Grid item xs={12} sm={12} md={6}>
 
-            <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
+            <Card   style={{width:"100%",margin:"auto",marginBottom:'10px'}}>
+    <CardActionArea>
+      <CardMedia style={{width:"100%"}}>
+        <img style={{width:'100%'}} src={product?.image} alt="green iguana"/>
         
+        </CardMedia>
+      <CardContent>
+        <Typography style={{textAlign:'center',fontWeight:'900',padding:"10px"}} gutterBottom variant="h3">
+         {product?.title}
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+        <Typography style={{textAlign:'center',padding:'10px'}} variant="h5" color="black">
+             {product?.description}
+           </Typography>
+        
+        <Typography style={{textAlign:'center',fontWeight:'700',color:'tomato',padding:'10px'}}  variant="h3" color="text.secondary">
+         Price: ${product?.price}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    </CardActionArea>
+  
+  </Card>
+
               
             </Grid>
 
 
             <Grid item xs={12} sm={12} md={6}>
                 <Box >
-                    <form style={{width: '100%',padding:'10px'}} onSubmit={handleSubmit(onSubmit)}>
-                        <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}} {...register("email")} value='Customer Email' />
-                        <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}} {...register("title")} value='Product Title' />
-                        <textarea style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}}{...register("description")} value='Product Description' />
-                        <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}}{...register("image")} value='Product Image URL' type="text"/>
-                        <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}}type="number" {...register("price")} value='500'/>
-                        <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}}type="number" {...register("phone")} placeholder="Enter Your Phone Number" />
-                        <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px', color:"white",fontWeight:"700",backgroundColor:"#0065f2",border:0,padding:'10px'}} type="submit" value="Confirm Order" />
+                    <form style={{width: '100%',padding:'20px',marginTop:'10%'}} onSubmit={handleSubmit(onSubmit)}>
+                        <input style={{width: '100%',padding:'20px',borderRadius:'10px',marginBottom:'20px'}} {...register("email")} value={user?.email} />
+
+                        <input style={{width: '100%',padding:'20px',borderRadius:'10px',marginBottom:'10px'}} {...register("title",{ required: true })} defaultValue={product?.title}  />
+
+                        <textarea style={{width: '100%',padding:'20px',borderRadius:'10px',marginBottom:'10px'}}{...register("description", { required: true })} defaultValue={product.description} />
+
+                        <input style={{width: '100%',padding:'20px',borderRadius:'10px',marginBottom:'10px'}}{...register("image", { required: true })} defaultValue={product?.image} />
+
+                        <input style={{width: '100%',padding:'20px',borderRadius:'10px',marginBottom:'10px'}} {...register("price",{ required: true })} defaultValue={product?.price}/>
+
+                        <input style={{width: '100%',padding:'20px',borderRadius:'10px',marginBottom:'10px'}}type="number" {...register("phone")} placeholder="Enter Your Phone Number" required />
+
+                        <input style={{width: '100%',padding:'20px',borderRadius:'10px',marginBottom:'10px', color:"white",fontWeight:"700",backgroundColor:"#0065f2",border:0,fontSize:"25px"}} type="submit" value="Confirm Order" />
                     </form>
                 </Box>
               
             </Grid>
          
         </Grid>
+        <Footer></Footer>
       </Box>
     );
 };

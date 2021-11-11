@@ -5,40 +5,48 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Product = ({product}) => {
-    const {title,description,price,image}=product;
+    const {title,description,price,image,_id}=product;
     return (
         
-        <Grid container  item xs={12} sm={6} md={4}>
+      <Grid container  item xs={12} sm={6} md={4}>
          
-        <Card   style={{maxHeight:"450px",maxWidth:"320px",margin:"auto",marginBottom:'10px'}}>
-      <CardActionArea>
-        <CardMedia style={{maxWidth:"320px"}}>
-          <img style={{width:'100%',maxHeight:'200px'}} src={image} alt="green iguana"/>
-          
-          </CardMedia>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-           {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-          <Typography variant="body4" color="text.secondary">
-            {price}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button variant="contained" size="small" color="primary">
-          BUY NOW
-        </Button>
-      </CardActions>
-    </Card>
+      <Card   style={{height:"450px",width:"300px",margin:"auto",marginBottom:'10px'}}>
+    <CardActionArea>
+      <CardMedia style={{width:"300px"}}>
+        <img style={{width:'100%',hight:'200px'}} src={image} alt="green iguana"/>
+        
+        </CardMedia>
+      <CardContent>
+        <Typography style={{textAlign:'center',fontWeight:'900'}} gutterBottom variant="h5">
+         {title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+             {description.slice(1-120)}
+           </Typography>
+        
+        <Typography style={{textAlign:'center',fontWeight:'700',color:'tomato'}}  variant="h5" color="text.secondary">
+         Price: ${price}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+    <CardActions>
+     <Link to={`/productsInfo/${_id}`}>
+     
+     <Button  sx={{fontWeight: 'bold',width:'100%'}} variant="contained" size="large" color="primary">
+     
+        BUY NOW
+      </Button>
+     </Link>
 
-         
-         </Grid>
+     
+    </CardActions>
+  </Card>
+
+       
+       </Grid>
        
     );
 };

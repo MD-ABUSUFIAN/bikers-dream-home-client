@@ -7,10 +7,21 @@ const AddProduct = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data =>{
 
-        alert('successfully data added')
-        data="";
+            fetch('http://localhost:5000/newProduct',{
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(res=>res.json()).then(data=>
+               {
+               if(data.insertedId){
+                alert('successfully data added')
+                console.log(data)
+               }
+               }
+                )
+           
         
-        console.log(data);
     }
     return (
         <Box >
@@ -19,7 +30,7 @@ const AddProduct = () => {
             
             <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}} {...register("title")} placeholder='Product Title' />
 
-            <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}}{...register("description")} placeholder='Product Description' />
+            <textarea style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}}{...register("description")} placeholder='Product Description' />
 
             <input style={{width: '70%',padding:'7px',marginLeft:"5%",marginBottom:'10px'}}{...register("image")} placeholder='Product Image URL' type="text"/>
 

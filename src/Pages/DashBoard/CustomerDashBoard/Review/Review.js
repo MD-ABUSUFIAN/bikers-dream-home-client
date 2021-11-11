@@ -6,7 +6,28 @@ import useAuth from '../../../../Hooks/useAuth';
 
 const Review = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+
+        fetch('http://localhost:5000/review',{
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        }).then(res=>res.json()).then(data=>{
+
+            if(data.insertedId){
+                console.log(data)
+            }
+           
+        })
+        alert("review data successfully send database")
+
+
+       
+
+        
+
+        console.log(data);
+    }
     const {user}=useAuth();
   
 

@@ -175,7 +175,7 @@ const DashBoard=(props)=> {
 
            <Switch>
                         <Route exact path={path}>
-                          <h3>Please select a topic.</h3>
+                       <MyOrders></MyOrders>
                         </Route>
 
                         {/* Customer DashBoard Route Area */}

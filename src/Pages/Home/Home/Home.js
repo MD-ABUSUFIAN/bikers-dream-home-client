@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import Banner from '../Banner/Banner';
@@ -12,10 +13,12 @@ const Home = () => {
         <Box container style={{backgroundColor:'#1a1a1a'}}>
             <Navigation></Navigation>
             <Banner></Banner>
+            <marquee><Typography sx={{color:'white',fontWeight:'900',my:4}} variant="h1">WELCOME BIKERS DREAM HOME</Typography> </marquee>
             <HomeProduct></HomeProduct>
             <CurrentOffer></CurrentOffer>
             <CustomerReview></CustomerReview>
             <Footer></Footer>
+           
         </Box>
     );
 };
