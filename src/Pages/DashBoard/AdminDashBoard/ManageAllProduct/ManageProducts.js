@@ -16,7 +16,7 @@ const ManageProducts = () => {
  
   useEffect(()=>{
    
-    fetch('http://localhost:5000/manageProducts')
+    fetch('https://protected-lowlands-98831.herokuapp.com/manageProducts')
     .then(res=>res.json())
     .then(data=>{
       setProducts(data)
@@ -29,7 +29,7 @@ const ManageProducts = () => {
   const handleDelete= (id) => {
     
     setIsLoading(false);
-    fetch(`http://localhost:5000/adminDelete/${id}`,{
+    fetch(`https://protected-lowlands-98831.herokuapp.com/adminDelete/${id}`,{
       method: 'DELETE',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify()

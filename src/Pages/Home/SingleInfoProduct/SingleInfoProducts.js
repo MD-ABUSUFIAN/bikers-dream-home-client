@@ -13,36 +13,38 @@ import Navigation from '../Navigation/Navigation';
 
 const SingleInfoProducts = () => {
   const {productId}=useParams();
-  const [isLoading,setIsLoading]=useState(true);
+  const [isLoading,setIsLoading]=useState(false);
 const {user}=useAuth();
   const [product,setProduct]=useState({});
 
   console.log(productId);
   useEffect(()=>{
-    setIsLoading(true);
-    fetch(`http://localhost:5000/singleProduct/${productId}`)
+   
+    fetch(`https://protected-lowlands-98831.herokuapp.com/singleProduct/${productId}`)
   .then(res=>res.json())
   .then(data=>setProduct(data))
-  setIsLoading(false);
+   
+ 
+
   },[isLoading])
   
-
+  
   
     const { register, handleSubmit } = useForm();
     const onSubmit = data =>{
         data.status="Pending";
        
-        fetch('http://localhost:5000/singleOrder',{
+        fetch('https://protected-lowlands-98831.herokuapp.com/singleOrder',{
           method: 'POST',
           headers: { 'Content-Type': 'application/json'},
           body: JSON.stringify(data)
           })
           .then(res=>res.json())
           .then(data=>{  
-            if(data.insertedId==true){
-              setIsLoading(true);
-         
+            if(data.insertedId){
+              
               alert('Successfully Order')
+              setIsLoading(true);
             }
             else{
               setIsLoading(false);

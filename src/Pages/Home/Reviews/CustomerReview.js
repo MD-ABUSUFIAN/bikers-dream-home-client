@@ -14,7 +14,7 @@ const CustomerReview = () => {
 
     useEffect(()=>{
 
-        fetch('http://localhost:5000/allReview')
+        fetch('https://protected-lowlands-98831.herokuapp.com/allReview')
         .then(res=>res.json())
         .then(data=>setReviews(data))
 

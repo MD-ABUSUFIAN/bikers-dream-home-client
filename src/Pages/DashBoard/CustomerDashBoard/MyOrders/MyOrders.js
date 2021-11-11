@@ -16,7 +16,7 @@ const AllProducts = () => {
    console.log(user)
    useEffect(()=>{
     
-    fetch(`http://localhost:5000/myOrder/${user?.email}`)
+    fetch(`https://protected-lowlands-98831.herokuapp.com/myOrder/${user?.email}`)
     .then(res=>res.json())
     .then(data=>setProducts(data))
     setIsLoading(false)
@@ -26,7 +26,7 @@ const AllProducts = () => {
 
 const handleDelete=(id)=>{
   setIsLoading(false);
-  fetch(`http://localhost:5000/myOrder/${id}`,{
+  fetch(`https://protected-lowlands-98831.herokuapp.com/myOrder/${id}`,{
     method: 'DELETE',
     headers:{ 'Content-Type': 'application/json'},
     body: JSON.stringify()
