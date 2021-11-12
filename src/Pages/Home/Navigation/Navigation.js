@@ -14,6 +14,7 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import logo from '../../../Images/logo.png';
 
 
 
@@ -69,7 +70,7 @@ const Navigation = () => {
     return (
       <>
         <Box sx={{ flexGrow: 1}}>
-        <AppBar sx={{backgroundColor:'black', height:'80px',padding:'5px'}}position="static">
+        <AppBar sx={{backgroundColor:'black', height:'110px',padding:'5px'}}position="static">
           <Toolbar>
           <IconButton
             size="large"
@@ -85,7 +86,7 @@ const Navigation = () => {
 
 
           <Typography className={navLogo} variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            BIKERS DREAM HOME
+            <img style={{width:'280px',height:'130px'}} src={logo} alt=""/>
           </Typography>
 
            <Box className={navItemContainer}>
@@ -131,40 +132,40 @@ const Navigation = () => {
             open={state}
             onClose={()=>setState(false)}
           >    <Box
-          sx={{ width: 250 }}
+          sx={{ width: 220, }}
           role="presentation"
         >
           <List>
               <ListItem button >
-                <ListItemText>
-                  <Link className={mobileNavIcon} to='/'>Home</Link>
+                <ListItemText >
+                  <Link style={{fontSize:'20px',color:'primary',padding:'10px',fontWeight:'bold'}} className={mobileNavIcon} to='/'>Home</Link>
                 </ListItemText>
               </ListItem>
               <Divider />
     
               <ListItem button >
                 <ListItemText>
-                <Link  className={mobileNavIcon} to='/allProduct'>More Collection</Link>
+                <Link style={{fontSize:'20px',color:'primary',padding:'10px',fontWeight:'bold'}}  className={mobileNavIcon} to='/allProduct'>More Collection</Link>
                 </ListItemText>
               </ListItem>
               <Divider />
               <ListItem button >
                 <ListItemText>
-                <Link  className={mobileNavIcon} to='/contactUs'>Contact Us</Link>
+                <Link style={{fontSize:'20px',color:'primary',padding:'10px',fontWeight:'bold'}}  className={mobileNavIcon} to='/contactUs'>Contact Us</Link>
                 </ListItemText>
               </ListItem>
               <Divider />
                   {user?.email ? <div>
                     <ListItem button >
                           <ListItemText>
-                              <Link className={mobileNavIcon} to='/dashBoard'>DashBoard</Link>
+                              <Link style={{fontSize:'20px',color:'red',padding:'10px',fontWeight:'bold'}} className={mobileNavIcon} to='/dashBoard'>DashBoard</Link>
                           </ListItemText>
                         </ListItem>
                         <Divider />
                        
                           <ListItem button >
                                 <ListItemText>
-                                <Link className={mobileNavIcon} to='/'>Logout</Link>
+                                <Link  className={mobileNavIcon} to='/'><Button onClick={userLogOut} style={{fontSize:'20px',color:'red',padding:'10px',fontWeight:'bold'}}>Logout</Button></Link>
                                 </ListItemText>
                            </ListItem>
                              <Divider />
@@ -172,7 +173,7 @@ const Navigation = () => {
                   :<div>
                         <ListItem button >
                               <ListItemText>
-                              <Link  className={mobileNavIcon} to='/login'>Login</Link>
+                              <Link style={{fontSize:'20px',color:'primary',padding:'10px',fontWeight:'bold'}}  className={mobileNavIcon} to='/login'>Login</Link>
                               </ListItemText>
                       </ListItem>
                   </div>}    
