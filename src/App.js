@@ -55,9 +55,6 @@ function App() {
             <Register></Register>
           </Route>
           
-          <Route path="/register">
-            <Register></Register>
-          </Route>
           <Route path="/review">
           <CustomerReview></CustomerReview>
           </Route>

@@ -21,11 +21,6 @@ const Review = () => {
         })
         alert("review data successfully send database")
 
-
-       
-
-        
-
         console.log(data);
     }
     const {user}=useAuth();

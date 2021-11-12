@@ -20,16 +20,16 @@ const CustomerReview = () => {
 
     },[])
     return ( 
-      <Box>
+      <Box >
          {/* <Navigation></Navigation> */}
-         <Box container sx={{ width: '100%',my:5}}>
-           <Typography variant="h3" sx={{fontWeight: '900',textAlign: 'center',py:2,color:'white',width:'50%',margin:'auto',backgroundColor:'black',borderRadius:'20px'}} >Customer Review</Typography>
+         <Box sx={{ width: '100%',my:5}}>
+           <Typography variant="h3" sx={{fontWeight: '700',textAlign: 'center',py:4,color:'white',width:'50%',margin:'auto',backgroundColor:'red',borderRadius:'20px'}} >Customer Review</Typography>
     <Box style={{marginTop: '50px'}}>
-    <Grid container  rowSpacing={4} spacing={{ xs: 1, md: 2 }} columns={{ xs: 10, sm: 5, md: 12 }}>
+    <Grid container  rowSpacing={4} spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, sm: 5, md: 12 }}>
          
          {
             reviews?.map(review=>
-                 <Grid key={reviews?._id} container  item xs={6} sm={6} md={3}>
+                 <Grid  key={reviews?._id}  item xs={6} sm={6} md={4} lg={3}>
           
           <Card   style={{height:"250px",width:"270px",margin:"auto",marginBottom:'10px',padding:'5px',textAlign:'center'}}>
         <CardActionArea>

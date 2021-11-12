@@ -6,70 +6,183 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import { IconButton, useTheme } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { makeStyles } from '@mui/styles';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 
 
 const Navigation = () => {
+  const theme=useTheme();
 
   const {userLogOut,user}=useAuth();
- 
+  const useStyle=makeStyles({
+    navItem: {
+      color:'white',
+      textDecoration:'none',
+      
+    },
+    navIcon:{
+      [theme.breakpoints.up('sm')]: {
+       display:'none'
+      }
+    },
+
+    navItemContainer:{
+      [theme.breakpoints.down('sm')]: {
+        display:'none'
+       }
+    },
+    navLogo:{
+      [theme.breakpoints.down('sm')]: {
+       textAlign: 'right'
+       }
+    },
+
+    mobileNavIcon:{
+      textDecoration:'none',
+      color:'black'
+
+    },
+
+    navBg:{
+      backgroundColor:'black',
+      height:'80px',
+      padding:'5px'
+     
+    },
+
+    navText:{
+      fontSize:'20px',
+      fontWeight:'bold',
+      marginRight:'10px',
+    }
+
+  })
+  const {navItem,navIcon,navItemContainer, mobileNavIcon,navLogo,navBg,navText}=useStyle();
+  const [state, setState] = React.useState(false);
     return (
+      <>
         <Box sx={{ flexGrow: 1}}>
-        <AppBar position="static">
+        <AppBar className={navBg} position="static">
           <Toolbar>
-       
-           {/* <Box>
-             <img style={{width:'150px',height:'110px',marginLeft:'-25px'}} src="https://lh3.googleusercontent.com/proxy/HjbKakuhjiyCAXNdnLsV7St4VDHr30vbj7GR1LXByZB4V9KoxgImyejGk4oeukkpXiwdEM1YtjkpLXmKtfciZJJOqRJ4UZ7CjyqMptlnpp4fuvL_kX7u" alt=""/>
-           </Box> */}
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            className={navIcon}
+            onClick={()=>setState(true)}
+          >
+            <MenuIcon />
+          </IconButton>
 
 
+          <Typography className={navLogo} variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            BIKERS DREAM HOME
+          </Typography>
 
-
-           <Link to='/home' style={{textDecoration:'none',paddingRight:""}}>
-                <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>Home</Button>
+           <Box className={navItemContainer}>
+            <Link className={navItem} to='/'>
+              <Button className={navText} color='inherit'>Home</Button>
             </Link>
 
-           <Link to='/allProduct' style={{textDecoration:'none',paddingRight:"4px"}}> 
-           <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>More Item</Button>
-           </Link>
-
-           <Link to='/review' style={{textDecoration:'none',paddingRight:"4px"}}>
-                <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>Review</Button>
-           </Link>
-
-
-           <Link to='/productsInfo' style={{textDecoration:'none',paddingRight:"4px"}}>
-                <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>ABOUT</Button>
+            <Link className={navItem} to='/allProduct'>
+              <Button className={navText} color='inherit'>More Collection</Button>
             </Link>
 
+            <Link className={navItem} to='/contactUs'>
+              <Button className={navText} color='inherit'>Contact Us</Button>
+            </Link>
+         
+           {
+              !user?.email ?
+              <Link className={navItem} to='/Login'>
+                <Button className={navText} color='inherit'>Login</Button>
+              </Link>:
+              <>
+                <Link className={navItem} to='/'>
+              <Button onClick={userLogOut} style={{color:'red',fontSize:'21px',border:'1px solid white',marginRight:'15px'}} className={navText} color='inherit'>Logout</Button>
+            </Link>
 
-
-          {user?.email?
-            <Box>
-                  <Link to='/' style={{textDecoration:'none',paddingRight:"4px"}}>
-               
-                      <Button onClick={userLogOut} style={{color:'red',fontSize:'18px',fontWeight:'bold',paddingRight:"4px"}}>Logout</Button>
-                      </Link>
-                      
-             
-                <Typography variant="body1">{user.email}</Typography>
-                <Link to='/dashBoard' style={{textDecoration:'none',paddingRight:"4px"}}>
-                      <Button style={{color:'red',fontSize:'18px',fontWeight:'bold'}}>DASHBOARD</Button>
-                 </Link>
-            </Box>
-              :
-            <Box>
-                <Link to='/login' style={{textDecoration:'none',paddingRight:"4px"}}>
-                <Button style={{color:'white',fontSize:'18px',fontWeight:'bold'}}>LOGIN {user.email}</Button>
-                 </Link>
-            </Box>
-          }
+            <Link className={navItem} to='/dashBoard'>
+              <Button className={navText} style={{color:'white',border:'1px solid white'}} color='inherit'>DashBoard</Button>
+            </Link>
+              </>
+           }
           
+          </Box>
 
 
           </Toolbar>
         </AppBar>
       </Box>
+      <div>
+     
+        <React.Fragment>
+          <Drawer
+            
+            open={state}
+            onClose={()=>setState(false)}
+          >    <Box
+          sx={{ width: 250 }}
+          role="presentation"
+        >
+          <List>
+              <ListItem button >
+                <ListItemText>
+                  <Link className={mobileNavIcon} to='/'>Home</Link>
+                </ListItemText>
+              </ListItem>
+              <Divider />
+    
+              <ListItem button >
+                <ListItemText>
+                <Link  className={mobileNavIcon} to='/allProduct'>More Collection</Link>
+                </ListItemText>
+              </ListItem>
+              <Divider />
+              <ListItem button >
+                <ListItemText>
+                <Link  className={mobileNavIcon} to='/contactUs'>Contact Us</Link>
+                </ListItemText>
+              </ListItem>
+              <Divider />
+                  {user?.email ? <div>
+                    <ListItem button >
+                          <ListItemText>
+                              <Link className={mobileNavIcon} to='/dashBoard'>DashBoard</Link>
+                          </ListItemText>
+                        </ListItem>
+                        <Divider />
+                       
+                          <ListItem button >
+                                <ListItemText>
+                                <Link className={mobileNavIcon} to='/'>Logout</Link>
+                                </ListItemText>
+                           </ListItem>
+                             <Divider />
+                  </div>
+                  :<div>
+                        <ListItem button >
+                              <ListItemText>
+                              <Link  className={mobileNavIcon} to='/login'>Login</Link>
+                              </ListItemText>
+                      </ListItem>
+                  </div>}    
+          </List>
+           </Box>
+          </Drawer>
+        </React.Fragment>
+
+    </div>
+      </>
     );
 };
 

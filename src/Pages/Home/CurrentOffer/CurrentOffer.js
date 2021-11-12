@@ -12,15 +12,15 @@ const CurrentOffer = () => {
         <Box sx={{my:8}}>
 
             <Typography style={{textAlign: 'center',fontWeight:"900",color:"red"}} variant="h2">CURRENT OFFERS</Typography>
-        <Box  style={{backgroundColor:'black'}} sx={{ width: '100%',my:5 }}>
+        <Box  style={{backgroundColor:'black'}} sx={{ width: '100%',my:2 }}>
       <Grid  container  columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid  container item xs={12} sm={12} md={6}>
+        <Grid item xs={12} sm={12} md={6}>
 
-            <Box style={{marginTop:'40%',alignItems:'center',justifyContent: 'center',}} >
+            <Box sx={{p:2}} style={{marginTop:'30%',alignItems:'center',justifyContent: 'center',}} >
             <Typography style={{color: 'white',fontWeight:'900',fontSize:'50px',textAlign:'center',marginBottom:'30px'}} variant="h2">
             PLEASE SEE YOUR LOCAL
             </Typography>
-            <Typography style={{color: 'red',fontWeight:'900',fontSize:'50px',textAlign:'center',marginBottom:'30px'}} variant="h2">
+            <Typography style={{color: 'red',fontWeight:'900',fontSize:'40px',textAlign:'center',marginBottom:'30px'}} variant="h2">
             YAMAHA MOTORCYCLE DEALER
             </Typography>
             <Typography style={{color: 'white',fontWeight:'900',fontSize:'50px',textAlign:'center'}} variant="h2">
