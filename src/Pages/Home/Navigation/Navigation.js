@@ -50,18 +50,18 @@ const Navigation = () => {
 
     },
 
-    navBg:{
-      backgroundColor:'black',
-      height:'80px',
-      padding:'5px'
+    // navBg:{
+    //   backgroundColor:'black',
+    //   height:'80px',
+    //   padding:'5px'
      
-    },
+    // },
 
-    navText:{
-      fontSize:'20px',
-      fontWeight:'bold',
-      marginRight:'10px',
-    }
+    // navText:{
+    //   fontSize:'20px',
+    //   fontWeight:'bold',
+    //   marginRight:'10px',
+    // }
 
   })
   const {navItem,navIcon,navItemContainer, mobileNavIcon,navLogo,navBg,navText}=useStyle();
@@ -69,7 +69,7 @@ const Navigation = () => {
     return (
       <>
         <Box sx={{ flexGrow: 1}}>
-        <AppBar className={navBg} position="static">
+        <AppBar sx={{backgroundColor:'black', height:'80px',padding:'5px'}}position="static">
           <Toolbar>
           <IconButton
             size="large"
@@ -90,29 +90,29 @@ const Navigation = () => {
 
            <Box className={navItemContainer}>
             <Link className={navItem} to='/'>
-              <Button className={navText} color='inherit'>Home</Button>
+              <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} color='inherit'>Home</Button>
             </Link>
 
             <Link className={navItem} to='/allProduct'>
-              <Button className={navText} color='inherit'>More Collection</Button>
+              <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} color='inherit'>More Collection</Button>
             </Link>
 
             <Link className={navItem} to='/contactUs'>
-              <Button className={navText} color='inherit'>Contact Us</Button>
+              <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} color='inherit'>Contact Us</Button>
             </Link>
          
            {
               !user?.email ?
               <Link className={navItem} to='/Login'>
-                <Button className={navText} color='inherit'>Login</Button>
+                <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} color='inherit'>Login</Button>
               </Link>:
               <>
                 <Link className={navItem} to='/'>
-              <Button onClick={userLogOut} style={{color:'red',fontSize:'21px',border:'1px solid white',marginRight:'15px'}} className={navText} color='inherit'>Logout</Button>
+              <Button onClick={userLogOut} style={{color:'red',fontSize:'21px',border:'1px solid white',marginRight:'15px'}} sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} color='inherit'>Logout</Button>
             </Link>
 
             <Link className={navItem} to='/dashBoard'>
-              <Button className={navText} style={{color:'white',border:'1px solid white'}} color='inherit'>DashBoard</Button>
+              <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} style={{color:'white',border:'1px solid white'}} color='inherit'>DashBoard</Button>
             </Link>
               </>
            }
