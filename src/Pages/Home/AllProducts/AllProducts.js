@@ -8,19 +8,29 @@ import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import Footer from '../Shared/Footer/Footer'
 
 
 const AllProducts = () => {
   const [products,setProducts]=useState([]);
+  const [isLoading,setIsLoading]=useState(true)
     useEffect(()=>{
+      setIsLoading(true)
         fetch('https://protected-lowlands-98831.herokuapp.com/allProduct')
         .then(res=>res.json())
-        .then(data=>setProducts(data))
+        .then(data=>{
+          setProducts(data)
+          setIsLoading(false)
+        })
     },[])
-console.log(products)
+
     return (
       <Box >
         <Navigation></Navigation>
+        {
+          isLoading && <CircularProgress />
+        }
        <Box container sx={{ width: '100%',backgroundColor:"#1a1a1a",pb:"70px" }}>
            <Typography variant="h4" sx={{fontWeight: '900',textAlign: 'center',py:5,color:'red'}} >NEW BIKE COLLECTION</Typography>
        <Grid container  rowSpacing={4} spacing={{ xs: 1, md: 2 }} columns={{ xs: 10, sm: 5, md: 12 }}>
@@ -63,6 +73,7 @@ console.log(products)
         }
        </Grid>
      </Box>
+     <Footer></Footer>
      </Box>
     );
 };

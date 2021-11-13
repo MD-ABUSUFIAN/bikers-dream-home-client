@@ -12,7 +12,7 @@ import useAuth from '../../../../Hooks/useAuth';
 const AllProducts = () => {
    const[products,setProducts]=useState([]);
    const {user}=useAuth();
-   const [isLoading,setIsLoading]=useState(false);
+   const [isLoading,setIsLoading]=useState(true);
    useEffect(()=>{
     setIsLoading(true);
     fetch(`https://protected-lowlands-98831.herokuapp.com/myOrder/${user?.email}`)

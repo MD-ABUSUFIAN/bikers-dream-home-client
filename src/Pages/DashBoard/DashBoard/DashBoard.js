@@ -52,11 +52,13 @@ const DashBoard=(props)=> {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          backgroundColor:'black'
         }}
       >
         <Toolbar>
           <IconButton
             color="inherit"
+          
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -171,11 +173,7 @@ const DashBoard=(props)=> {
               </Box>
               
               }
-               
-               
-               
-
-                
+            
             </ul>
             
           
@@ -232,10 +230,7 @@ const DashBoard=(props)=> {
 }
 
 DashBoard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+
   window: PropTypes.func,
 };
 
