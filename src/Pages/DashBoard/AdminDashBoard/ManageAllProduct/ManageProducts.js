@@ -61,7 +61,7 @@ const ManageProducts = () => {
              products?.map(product=>
                  <Grid container key={product._id}  item xs={12} sm={4} md={3}>
           
-          <Card   style={{height:"300px",width:"300px",margin:"auto",marginBottom:'10px'}}>
+          <Card   style={{height:"340px",width:"320px",margin:"auto",marginBottom:'10px'}}>
         <CardActionArea>
           <CardMedia style={{maxWidth:"350px"}}>
             <img style={{width:'100%',maxHeight:'120px'}} src={product.image} alt="green iguana"/>
