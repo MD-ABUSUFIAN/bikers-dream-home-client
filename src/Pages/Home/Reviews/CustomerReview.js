@@ -7,6 +7,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Navigation from '../Navigation/Navigation';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
 
 const CustomerReview = () => {
 
@@ -29,14 +31,17 @@ const CustomerReview = () => {
          
          {
             reviews?.map(review=>
-                 <Grid  key={reviews?._id}  item xs={6} sm={6} md={4} lg={3}>
+                 <Grid  key={reviews?._id}  item xs={6} sm={6} md={3} lg={3}>
           
-          <Card   style={{height:"250px",width:"270px",margin:"auto",marginBottom:'10px',padding:'5px',textAlign:'center'}}>
+          <Card   style={{height:"300px",width:"290px",margin:"auto",marginBottom:'10px',padding:'5px',textAlign:'center'}}>
         <CardActionArea>
-        <Typography variant="h5">
-             Customer Feedback
+        <Typography sx={{color:"blue",my:1,fontWeight:"bold"}} variant="h5">
+             Customer Review
             </Typography>
-        <Typography>
+              <Typography sx={{color:'red',fontWeight:'bold'}} variant='h5'>
+             {review?.displayName}
+            </Typography>
+              <Typography sx={{color:'black',fontWeight:'bold'}} variant='primary'>
              {review?.email}
             </Typography>
 
@@ -45,16 +50,14 @@ const CustomerReview = () => {
              {review?.review}
             </Typography>
           </CardContent>
+         
         </CardActionArea>
-        <CardActions sx={{fontWeight: 'bold',backgroundColor: 'red',width: '50%'}}>
-        
-         
-                   {review?.rating}
-         
+        <CardActions sx={{fontWeight: 'bold',width: '50%'}}>
+          <Stack spacing={1}>
+          <Rating name="size-large" defaultValue={review?.rating} size="large" />
+           </Stack>
         </CardActions>
-      </Card>
-  
-           
+      </Card> 
            </Grid>
            )
          }

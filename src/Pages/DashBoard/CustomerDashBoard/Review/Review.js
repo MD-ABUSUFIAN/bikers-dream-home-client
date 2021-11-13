@@ -36,6 +36,8 @@ const Review = () => {
                 
                     <input style={{width: '70%',padding:"10px",borderRadius:"5px",marginBottom:'10px'}}{...register("email")} value={user?.email} />
                     <br/>
+                    <input style={{width: '70%',padding:"10px",borderRadius:"5px",marginBottom:'10px'}}{...register("displayName")} value={user?.displayName} />
+                    <br/>
                     <textarea style={{width: '70%',padding:"10px",borderRadius:"5px"}}{...register("review")} placeholder="Please Your Valuable Review" type="text-area" />
                     <br/>
                     <input style={{width: '70%',padding:"10px",borderRadius:"5px",marginBottom:'10px'}} type="number" {...register("rating", { min:1, max: 5 })} Placeholder="Please Give Your Service Rating Number  1-5 " />
