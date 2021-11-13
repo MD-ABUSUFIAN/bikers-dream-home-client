@@ -15,7 +15,7 @@ const AllProducts = () => {
    const [isLoading,setIsLoading]=useState(false);
    console.log(user)
    useEffect(()=>{
-    
+    setIsLoading(true);
     fetch(`https://protected-lowlands-98831.herokuapp.com/myOrder/${user?.email}`)
     .then(res=>res.json())
     .then(data=>setProducts(data))
@@ -25,7 +25,7 @@ const AllProducts = () => {
 
 
 const handleDelete=(id)=>{
-  setIsLoading(false);
+  setIsLoading(true);
   fetch(`https://protected-lowlands-98831.herokuapp.com/myOrder/${id}`,{
     method: 'DELETE',
     headers:{ 'Content-Type': 'application/json'},
@@ -34,7 +34,7 @@ const handleDelete=(id)=>{
   .then(res=>res.json())
   .then(data=>{
     alert("Are You Sure Delete This Order")
-    setIsLoading(true);
+    setIsLoading(false);
     console.log(data)
   })
   console.log(id)

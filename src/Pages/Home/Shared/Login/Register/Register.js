@@ -20,7 +20,10 @@ const Register = () => {
 
     const onSubmit = data =>{
         if(data.password===data.password2){
-          
+
+          data.role="admin"
+           
+       
           emailRegistration(data,location,history)
           alert("Register Successfully")
         }

@@ -14,7 +14,7 @@ const HomeProduct = () => {
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])
-console.log(products)
+
     
     return (
         <Box  sx={{ width: '100%',my:5 }}>
