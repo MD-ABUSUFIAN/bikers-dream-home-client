@@ -109,7 +109,7 @@ const DashBoard=(props)=> {
               
             <Link style={{textDecoration:'none'}} to='/'>
                <List >
-                 <Button onClick={userLogOut}  style={{fontSize:'20px',color:'Black',fontWeight:'700'}}><img style={{width:'50px',borderRadius:'10px',padding:'3px',}} src="https://png.pngtree.com/png-vector/20190425/ourlarge/pngtree-vector-home-icon-png-image_991177.jpg" alt=""/>LogOut</Button>
+                 <Button onClick={userLogOut}  style={{fontSize:'20px',color:'Black',fontWeight:'700'}}><img style={{width:'50px',borderRadius:'10px',padding:'3px',}} src="https://mpng.subpng.com/20180331/sye/kisspng-computer-icons-abmeldung-clip-art-exit-5abfc80f1ca5a2.4056158015225180311173.jpg" alt=""/>LogOut</Button>
                  </List>
              </Link>
             
@@ -121,12 +121,12 @@ const DashBoard=(props)=> {
                 <Box>
                  <Link style={{textDecoration:'none'}}to={`${url}/pay`}>
                    <List >
-                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon2.cleanpng.com/20180605/suf/kisspng-computer-icons-icon-design-clip-art-order-icon-5b164061dbd306.2382823615281849299004.jpg" alt=""/> Payment</Button>
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'60px',borderRadius:'10px',padding:'3px'}} src="https://www.pngplay.com/wp-content/uploads/7/Online-Payment-Icon-Transparent-Background.png" alt=""/> Payment</Button>
                      </List>
                 </Link>
                 <Link style={{textDecoration:'none'}}to={`${url}/myOrder`}>
                    <List >
-                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon2.cleanpng.com/20180605/suf/kisspng-computer-icons-icon-design-clip-art-order-icon-5b164061dbd306.2382823615281849299004.jpg" alt=""/> My Order</Button>
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'60px',borderRadius:'10px',padding:'3px'}} src="https://static.thenounproject.com/png/812938-200.png" alt=""/> My Order</Button>
                      </List>
                 </Link>
  
@@ -134,7 +134,7 @@ const DashBoard=(props)=> {
  
                 <Link style={{textDecoration:'none'}} to={`${url}/review`}>
                    <List >
-                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon-library.com/images/services-icon-png/services-icon-png-8.jpg" alt=""/> Review</Button>
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'60px',borderRadius:'10px',padding:'3px'}} src="https://cdn.iconscout.com/icon/premium/png-256-thumb/rating-1793028-1520602.png" alt=""/> Review</Button>
                      </List>
                </Link>
                </Box>
@@ -147,7 +147,7 @@ const DashBoard=(props)=> {
                 <Box>
                 <Link style={{textDecoration:'none'}} to={`${url}/addProduct`}>
                    <List >
-                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon-library.com/images/services-icon-png/services-icon-png-8.jpg" alt=""/>Add Product</Button>
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'50px',borderRadius:'10px',padding:'3px'}} src="https://icon-library.com/images/services-icon-png/services-icon-png-8.jpg" alt=""/>Add Product</Button>
                      </List>
                </Link>
               
@@ -155,19 +155,19 @@ const DashBoard=(props)=> {
                 <Link style={{textDecoration:'none'}} to={`${url}/makeAdmin`}>
                        <List >
                          <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}}>
-                           <img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/9/763/png-clipart-computer-icons-login-user-system-administrator-admin-desktop-wallpaper-megaphone-thumbnail.png" alt=""/> Make Admin</Button>
+                           <img style={{width:'50px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/9/763/png-clipart-computer-icons-login-user-system-administrator-admin-desktop-wallpaper-megaphone-thumbnail.png" alt=""/> Make Admin</Button>
                            </List>
                  </Link>
               
               
                 <Link style={{textDecoration:'none'}}to={`${url}/manageOrder`}> 
                      <List >
-                       <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/267/100/png-clipart-sharepoint-for-project-management-others-miscellaneous-logo.png" alt=""/> Manage Order</Button>
+                       <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'50px',borderRadius:'10px',padding:'3px'}} src="https://w7.pngwing.com/pngs/707/566/png-transparent-computer-icons-inventory-management-software-order-management-system-business-process-stool-text-logo-stool.png" alt=""/> Manage Order</Button>
                        </List>
                  </Link>
                 <Link style={{textDecoration:'none'}}to={`${url}/manageProducts`}> 
                      <List >
-                       <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/267/100/png-clipart-sharepoint-for-project-management-others-miscellaneous-logo.png" alt=""/>Manage Product</Button>
+                       <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'50px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/267/100/png-clipart-sharepoint-for-project-management-others-miscellaneous-logo.png" alt=""/>Manage Product</Button>
                        </List>
                  </Link>
               </Box>

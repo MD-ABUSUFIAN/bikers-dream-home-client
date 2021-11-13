@@ -26,14 +26,15 @@ const AllProducts = () => {
     },[])
 
     return (
-      <Box >
+      <Box sx={{ width: '100%',backgroundColor:"#1a1a1a"}}>
         <Navigation></Navigation>
-        {
+       
+       <Box container sx={{pb:"70px" ,marginTop:'40px'}} >
+           <Typography variant="h4" sx={{fontWeight: '900',textAlign: 'center',py:2,color:'red',backgroundColor:'white',width:'75%',margin:'auto',borderRadius:'20px',marginBottom:'30px'}} >NEW BIKE COLLECTION</Typography>
+       <Grid container  rowSpacing={4} spacing={{ xs: 1, md: 2 }} columns={{ xs: 10, sm: 5, md: 12 }}>
+       {
           isLoading && <CircularProgress />
         }
-       <Box container sx={{ width: '100%',backgroundColor:"#1a1a1a",pb:"70px" }}>
-           <Typography variant="h4" sx={{fontWeight: '900',textAlign: 'center',py:5,color:'red'}} >NEW BIKE COLLECTION</Typography>
-       <Grid container  rowSpacing={4} spacing={{ xs: 1, md: 2 }} columns={{ xs: 10, sm: 5, md: 12 }}>
          
         {
             products?.map(product=>

@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import Banner from '../Banner/Banner';
 import CurrentOffer from '../CurrentOffer/CurrentOffer';
+import Gellery from '../Gellery/Gellery';
 import HomeProduct from '../HomeProduct/HomeProduct';
 import Navigation from '../Navigation/Navigation';
 import CustomerReview from '../Reviews/CustomerReview';
@@ -16,6 +17,7 @@ const Home = () => {
             <marquee><Typography sx={{color:'white',fontWeight:'900',my:4}} variant="h1">WELCOME BIKERS DREAM HOME</Typography> </marquee>
             <HomeProduct></HomeProduct>
             <CurrentOffer></CurrentOffer>
+            <Gellery></Gellery>
             <CustomerReview></CustomerReview>
             <Footer></Footer>
            

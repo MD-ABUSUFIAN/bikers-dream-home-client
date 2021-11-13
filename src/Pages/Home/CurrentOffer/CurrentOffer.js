@@ -9,7 +9,7 @@ import { Typography } from '@mui/material';
 const CurrentOffer = () => {
     return (
 
-        <Box sx={{my:8}}>
+        <Box sx={{mt:8}}>
 
             <Typography sx={{py:3}} style={{textAlign: 'center',fontWeight:"900",color:"red", backgroundColor:'white',width:'75%',margin:'auto',borderRadius:'20px',marginTop:'40px',marginBottom:'50px'}} variant="h3">CURRENT OFFERS</Typography>
         <Box  style={{backgroundColor:'black'}} sx={{ width: '100%',my:2 }}>
