@@ -65,12 +65,12 @@ const Navigation = () => {
     // }
 
   })
-  const {navItem,navIcon,navItemContainer, mobileNavIcon,navLogo,navBg,navText}=useStyle();
+  const {navItem,navIcon,navItemContainer, mobileNavIcon,navLogo}=useStyle();
   const [state, setState] = React.useState(false);
     return (
       <>
         <Box sx={{ flexGrow: 1}}>
-        <AppBar sx={{backgroundColor:'black', height:'110px',padding:'5px'}}position="static">
+        <AppBar sx={{backgroundColor:'black', height:'120px',padding:'5px'}}position="static">
           <Toolbar>
           <IconButton
             size="large"
@@ -98,9 +98,6 @@ const Navigation = () => {
               <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} color='inherit'>More Collection</Button>
             </Link>
 
-            <Link className={navItem} to='/contactUs'>
-              <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} color='inherit'>Contact Us</Button>
-            </Link>
          
            {
               !user?.email ?
@@ -113,7 +110,7 @@ const Navigation = () => {
             </Link>
 
             <Link className={navItem} to='/dashBoard'>
-              <Button sx={{ fontSize:'20px',fontWeight:'bold',marginRight:'10px'}} style={{color:'white',border:'1px solid white'}} color='inherit'>DashBoard</Button>
+              <Button sx={{ fontSize:'20px',fontWeight:'bold'}} style={{color:'white',border:'1px solid white'}} color='inherit'>DashBoard</Button>
             </Link>
               </>
            }
@@ -149,11 +146,11 @@ const Navigation = () => {
                 </ListItemText>
               </ListItem>
               <Divider />
-              <ListItem button >
+              {/* <ListItem button >
                 <ListItemText>
                 <Link style={{fontSize:'20px',color:'primary',padding:'10px',fontWeight:'bold'}}  className={mobileNavIcon} to='/contactUs'>Contact Us</Link>
                 </ListItemText>
-              </ListItem>
+              </ListItem> */}
               <Divider />
                   {user?.email ? <div>
                     <ListItem button >

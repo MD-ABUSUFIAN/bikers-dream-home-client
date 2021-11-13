@@ -13,20 +13,23 @@ import Navigation from '../Navigation/Navigation';
 
 const SingleInfoProducts = () => {
   const {productId}=useParams();
-  const [isLoading,setIsLoading]=useState(false);
+  const [isLoading,setIsLoading]=useState(true);
 const {user}=useAuth();
   const [product,setProduct]=useState({});
 
   console.log(productId);
   useEffect(()=>{
-   
+   setIsLoading(true)
     fetch(`https://protected-lowlands-98831.herokuapp.com/singleProduct/${productId}`)
   .then(res=>res.json())
-  .then(data=>setProduct(data))
+  .then(data=>{
+    setProduct(data)
+    setIsLoading(false)
+  })
    
  
 
-  },[isLoading])
+  },[])
   
   
   
@@ -42,32 +45,28 @@ const {user}=useAuth();
           .then(res=>res.json())
           .then(data=>{  
             if(data.insertedId){
-              
               alert('Successfully Order')
-              setIsLoading(true);
             }
-            else{
-              setIsLoading(false);
-            }
+           
             console.log(data)
             
-           
-           
         })
 
-        console.log(data)
-
-        {
-          isLoading && <CircularProgress />
-        }
+     
+        
        
     }
     return (
         <Box container  sx={{ flexGrow: 1,mb:8}}>
           <Navigation></Navigation>
-         <Box> <Typography variant="h3" style={{fontWeight: '900',textAlign: 'center',marginTop:"100px",backgroundColor:'blue',width:'50%',margin:'auto',padding: '15px',borderRadius:'20px',color:'white'}}>
-            Purchase Your Product
-          </Typography></Box>
+         <Box> 
+              <Typography variant="h3" style={{fontWeight: '900',textAlign: 'center',marginTop:"3%",backgroundColor:'blue',width:'50%',margin:'auto',padding: '15px',borderRadius:'20px',color:'white'}}>
+                Purchase Your Product
+             </Typography>
+             {
+          isLoading && <CircularProgress />
+        }
+          </Box>
         <Grid style={{marginTop:"3%",marginBottom:"100px"}} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
           
          

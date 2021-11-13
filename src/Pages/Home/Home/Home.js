@@ -10,7 +10,7 @@ import Footer from '../Shared/Footer/Footer';
 
 const Home = () => {
     return (
-        <Box container style={{backgroundColor:'#1a1a1a'}}>
+        <Box container style={{backgroundColor:'#000205'}}>
             <Navigation></Navigation>
             <Banner></Banner>
             <marquee><Typography sx={{color:'white',fontWeight:'900',my:4}} variant="h1">WELCOME BIKERS DREAM HOME</Typography> </marquee>

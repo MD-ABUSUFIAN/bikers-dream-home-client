@@ -4,28 +4,34 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-import Navigation from '../Navigation/Navigation';
+import {  CardActionArea, CardActions } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const CustomerReview = () => {
-
     const [reviews,setReviews]=useState([]);
+    const [isLoading,setIsLoading]=useState(true)
 
     useEffect(()=>{
-
+          setIsLoading(true)
         fetch('https://protected-lowlands-98831.herokuapp.com/allReview')
         .then(res=>res.json())
-        .then(data=>setReviews(data))
+        .then(data=>{
+          setReviews(data)
+          setIsLoading(false)
+        })
 
     },[])
     return ( 
       <Box >
          {/* <Navigation></Navigation> */}
-         <Box sx={{ width: '100%',my:5}}>
-           <Typography variant="h3" sx={{fontWeight: '700',textAlign: 'center',py:4,color:'white',width:'50%',margin:'auto',backgroundColor:'red',borderRadius:'20px'}} >Customer Review</Typography>
+         <Box sx={{ width: '100%',mb:8}}>
+           <Typography variant="h3" sx={{fontWeight: '700',textAlign: 'center',py:4,color:'white',width:'70%',margin:'auto',backgroundColor:'red',borderRadius:'20px'}} >Customer Review</Typography>
+
+           {
+             isLoading && <CircularProgress />
+           }
     <Box style={{marginTop: '50px'}}>
     <Grid container  rowSpacing={4} spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, sm: 5, md: 12 }}>
          
@@ -35,7 +41,7 @@ const CustomerReview = () => {
           
           <Card   style={{height:"300px",width:"290px",margin:"auto",marginBottom:'10px',padding:'5px',textAlign:'center'}}>
         <CardActionArea>
-        <Typography sx={{color:"blue",my:1,fontWeight:"bold"}} variant="h5">
+        <Typography sx={{color:"blue",my:2,fontWeight:"bold"}} variant="h5">
              Customer Review
             </Typography>
               <Typography sx={{color:'red',fontWeight:'bold'}} variant='h5'>
@@ -54,7 +60,7 @@ const CustomerReview = () => {
         </CardActionArea>
         <CardActions sx={{fontWeight: 'bold',width: '50%'}}>
           <Stack spacing={1}>
-          <Rating name="size-large" defaultValue={review?.rating} size="large" />
+          <Rating name="size-large" value={review?.rating} size="large" readOnly/>
            </Stack>
         </CardActions>
       </Card> 
