@@ -58,7 +58,9 @@ const handleGoogleLogin =()=>{
                 <br/>
                 <Typography style={{textAlign:'center'}}>Already Register? Please <Link to='/login'>Login</Link></Typography>
                 
-                <p style={{textAlign:"center"}}>.........................or.........................</p>
+                
+            <br/>
+            <br/>
                 <Button onClick={()=>handleGoogleLogin()} style={{marginLeft:'35%',padding:'10px'}} variant="contained">Google Login</Button>
                 
             </form>}
@@ -69,8 +71,6 @@ const handleGoogleLogin =()=>{
 {/* ; <Alert severity="success">Registered SuccessFully Please Login</Alert> */}
             
            
-
-
 
             {
               authError && <Alert severity="error">{authError}</Alert>

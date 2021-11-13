@@ -13,7 +13,6 @@ const AllProducts = () => {
    const[products,setProducts]=useState([]);
    const {user}=useAuth();
    const [isLoading,setIsLoading]=useState(false);
-   console.log(user)
    useEffect(()=>{
     setIsLoading(true);
     fetch(`https://protected-lowlands-98831.herokuapp.com/myOrder/${user?.email}`)

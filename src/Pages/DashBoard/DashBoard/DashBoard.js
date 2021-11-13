@@ -28,12 +28,13 @@ const DashBoard=(props)=> {
   let { path, url } = useRouteMatch();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const {userLogOut,admin}=useAuth();
-  const [isLoading,setIsLoading]=React.useState(true);
+  const {userLogOut,isAdmin}=useAuth();
+  // const [isLoading,setIsLoading]=React.useState(true);
  
 
 
   const handleDrawerToggle = () => {
+  
     
     
     setMobileOpen(!mobileOpen);
@@ -112,64 +113,68 @@ const DashBoard=(props)=> {
             
 
 
+              {
+                !isAdmin && 
+             
+                <Box>
+                 <Link style={{textDecoration:'none'}}to={`${url}/pay`}>
+                   <List >
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon2.cleanpng.com/20180605/suf/kisspng-computer-icons-icon-design-clip-art-order-icon-5b164061dbd306.2382823615281849299004.jpg" alt=""/> Payment</Button>
+                     </List>
+                </Link>
+                <Link style={{textDecoration:'none'}}to={`${url}/myOrder`}>
+                   <List >
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon2.cleanpng.com/20180605/suf/kisspng-computer-icons-icon-design-clip-art-order-icon-5b164061dbd306.2382823615281849299004.jpg" alt=""/> My Order</Button>
+                     </List>
+                </Link>
+ 
+ 
+ 
+                <Link style={{textDecoration:'none'}} to={`${url}/review`}>
+                   <List >
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon-library.com/images/services-icon-png/services-icon-png-8.jpg" alt=""/> Review</Button>
+                     </List>
+               </Link>
+               </Box>
+              }
+             
+
+               
+              {
+                isAdmin && 
+                <Box>
+                <Link style={{textDecoration:'none'}} to={`${url}/addProduct`}>
+                   <List >
+                     <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon-library.com/images/services-icon-png/services-icon-png-8.jpg" alt=""/>Add Product</Button>
+                     </List>
+               </Link>
               
-             { 
-               !admin && <Box>
-                <Link style={{textDecoration:'none'}}to={`${url}/pay`}>
-                  <List >
-                    <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon2.cleanpng.com/20180605/suf/kisspng-computer-icons-icon-design-clip-art-order-icon-5b164061dbd306.2382823615281849299004.jpg" alt=""/> Payment</Button>
-                    </List>
-               </Link>
-               <Link style={{textDecoration:'none'}}to={`${url}/myOrder`}>
-                  <List >
-                    <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon2.cleanpng.com/20180605/suf/kisspng-computer-icons-icon-design-clip-art-order-icon-5b164061dbd306.2382823615281849299004.jpg" alt=""/> My Order</Button>
-                    </List>
-               </Link>
-
-
-
-               <Link style={{textDecoration:'none'}} to={`${url}/review`}>
-                  <List >
-                    <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon-library.com/images/services-icon-png/services-icon-png-8.jpg" alt=""/> Review</Button>
-                    </List>
-              </Link>
+              
+                <Link style={{textDecoration:'none'}} to={`${url}/makeAdmin`}>
+                       <List >
+                         <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}}>
+                           <img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/9/763/png-clipart-computer-icons-login-user-system-administrator-admin-desktop-wallpaper-megaphone-thumbnail.png" alt=""/> Make Admin</Button>
+                           </List>
+                 </Link>
+              
+              
+                <Link style={{textDecoration:'none'}}to={`${url}/manageOrder`}> 
+                     <List >
+                       <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/267/100/png-clipart-sharepoint-for-project-management-others-miscellaneous-logo.png" alt=""/> Manage Order</Button>
+                       </List>
+                 </Link>
+                <Link style={{textDecoration:'none'}}to={`${url}/manageProducts`}> 
+                     <List >
+                       <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/267/100/png-clipart-sharepoint-for-project-management-others-miscellaneous-logo.png" alt=""/>Manage Product</Button>
+                       </List>
+                 </Link>
               </Box>
-             }
-
-               
               
+              }
                
                
                
-{ admin &&
-  <Box>
-  <Link style={{textDecoration:'none'}} to={`${url}/addProduct`}>
-     <List >
-       <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://icon-library.com/images/services-icon-png/services-icon-png-8.jpg" alt=""/>Add Product</Button>
-       </List>
- </Link>
 
-
-  <Link style={{textDecoration:'none'}} to={`${url}/makeAdmin`}>
-         <List >
-           <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}}>
-             <img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/9/763/png-clipart-computer-icons-login-user-system-administrator-admin-desktop-wallpaper-megaphone-thumbnail.png" alt=""/> Make Admin</Button>
-             </List>
-   </Link>
-
-
-  <Link style={{textDecoration:'none'}}to={`${url}/manageOrder`}> 
-       <List >
-         <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/267/100/png-clipart-sharepoint-for-project-management-others-miscellaneous-logo.png" alt=""/> Manage Order</Button>
-         </List>
-   </Link>
-  <Link style={{textDecoration:'none'}}to={`${url}/manageProducts`}> 
-       <List >
-         <Button style={{fontSize:'15px',color:'red',fontWeight:'700'}} ><img style={{width:'40px',borderRadius:'10px',padding:'3px'}} src="https://e7.pngegg.com/pngimages/267/100/png-clipart-sharepoint-for-project-management-others-miscellaneous-logo.png" alt=""/>Manage Product</Button>
-         </List>
-   </Link>
-</Box>
-}
                 
             </ul>
             

@@ -59,7 +59,8 @@ const history=useHistory();
              <br/>
             <Typography style={{textAlign:'center'}}>New User? Please<Link to='/register'>Register</Link></Typography>
             
-             <p style={{textAlign:"center"}}>.........................or.........................</p>
+            <br/>
+            <br/>
              <Button onClick={()=>handleGoogleLogin()} style={{marginLeft:'35%',padding:'10px'}} variant="contained">Google Login</Button>
          </form>
           }

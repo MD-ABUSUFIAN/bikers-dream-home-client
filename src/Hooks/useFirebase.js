@@ -96,15 +96,18 @@ const useFirebase=()=>{
       
       
       useEffect(()=>{
-          fetch(`http://localhost:5000/allUser/${user.email}`)
+          fetch(`https://protected-lowlands-98831.herokuapp.com/allUser/${user?.email}`)
           .then(res=>res.json())
-          .then(data=>setIsLoading(data.admin))
-      },[])
+          .then(data=>setIsAdmin(data.admin))
+      },[user?.email])
+
+
 
 
 const saveUserDatabase=(displayName,email,method)=>{
     const user={displayName,email}
-    fetch('http://localhost:5000/newUser',{
+    console.log(user)
+    fetch('https://protected-lowlands-98831.herokuapp.com/newUser',{
         method: method,
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(user)
