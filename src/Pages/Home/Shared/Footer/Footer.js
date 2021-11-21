@@ -61,9 +61,9 @@ const Footer = () => {
 <ul style={{color: 'white'}}>
                 
                 <List>Connect With Bikers Dream Home</List>
-                <List>https://www.facebook.com/chamok.mdchamok/</List>
+                {/* <List>https://www.facebook.com/chamok.mdchamok/</List>
                 <List>https://www.instagram.com/md.chamok/</List>
-                <List>abusufian.programmer@gmail.com</List>
+                <List>abusufian.programmer@gmail.com</List> */}
                 <List>01722123801</List>
             </ul>
         </Grid>

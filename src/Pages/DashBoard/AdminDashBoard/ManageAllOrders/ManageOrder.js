@@ -21,6 +21,11 @@ const ManageOrder = () => {
     const onSubmit = data => console.log(data);
 
 
+    const  handleOrderId=e=>{
+      console.log(e)
+    }
+
+
     
     return (
         <Box>
@@ -57,33 +62,39 @@ const ManageOrder = () => {
         </CardActionArea>
         <CardActions>
             
-        <form onSubmit={handleSubmit(onSubmit)}>
-      
-      <select {...register("status")}>
-        <option  value={product._id}>Id:</option>
-       
-        <option type={'text'} value="Shipped">Shipped</option>
-       { console.log(product._id)}
-      </select>
-      
-      <input type="submit" />
-      </form>
+        
      
          
         </CardActions>
        
        
       </Card>
-      {
-         isLoading &&<CircularProgress />
-       }
- 
+      
+ <form onSubmit={handleSubmit(onSubmit)}>
+      
+      <select  onClick={() => handleOrderId(product?._id)} {...register("status")}>
+       
+       
+        {/* <option type={'text'} value={product?.status}>{product?.status}</option> */}
+        <option type={'text'} value="Shipped">Shipped</option>
+        <option type={'text'} value="waiting">Waiting</option>
+      
+      </select>
+      
+      <input type="submit" value='Update' />
+      </form>
     
            </Grid>
            
       
           )
         }
+
+
+
+{
+         isLoading &&<CircularProgress />
+       }
        </Grid>
       
 
